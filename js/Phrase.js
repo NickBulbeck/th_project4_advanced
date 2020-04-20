@@ -3,12 +3,15 @@
  * Phrase.js */
 
  class Phrase {
-  constructor(text) {
+  constructor(text,level) {
     this.text = text;
+    this.level = level;
   }
 
   phraseTest() {
-    const testOutput = `Testing the Phrase object: ${this.text}`;
+    let testOutput = `Testing the Phrase object: ${this.text}`;
+    const testGame = new Game("test user","basic",[this]);
+    testOutput += `. testGame object, created within Phrase: ${testGame.phrases[0].text}`;
     return testOutput;
   }
 

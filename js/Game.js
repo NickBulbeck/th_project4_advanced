@@ -16,8 +16,8 @@
 
   gameTest() {
     const testOutput = `testing the Game object: user is ${this.user.name},
-                          level is ${this.level},
-                         first phrase is ${this.phrases[0].text}`;
+                        level is ${this.level},
+                        first phrase is ${this.phrases[0].text}`;
     return testOutput;
   }
 
