@@ -20,10 +20,8 @@ class Session {
     const localStorageFound = localStorage.getItem('phraseHunterApp');
     if (localStorageFound) {
       const rawAppData = JSON.parse(localStorageFound);
-      // console.log(rawAppData);
       phraseSourceData = rawAppData.phrases;
       localStorage.removeItem('phraseHunterApp');
-      // console.log("Just cleared localStorage.");
     } else {
       phraseSourceData = data_js_sourceData;
       const newAppData = {
@@ -41,7 +39,6 @@ class Session {
   }
 
   processSourceData(array) {
-    // console.log(array);
     const levelledArray = array.filter( (phrase) => {
             if (phrase.level === this.level) {
               return true;
@@ -50,7 +47,6 @@ class Session {
             }
     });
     return levelledArray;
-    // ToDo: return a random subset of this array
   }
 
 //==============================================================
