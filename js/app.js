@@ -2,6 +2,17 @@
  * Project 4 - OOP Game App
  * app.js */
 
+/*
+  Rubric:
+  -- event-handler on the start button so that a new Game is created
+  -- event-handlers added to the qwerty buttons so that handleInteraction() is called
+  -- mind and dinnae dae anything when the spaces around the buttons are clicked - I've already sorted that.
+  -- add ANOTHER event-handler so that a keystroke also calls handleInteraction(). 
+  -- When the game is over, the board is reset back to the Start Game button, and clicking it repeats the process.
+  -- Also I need to add my own styling. Not sure whether adding functionality will get Exceeds...
+
+*/
+
 
 const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
 
@@ -22,5 +33,3 @@ const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
 }
 
 publicStaticVoidMainStringAaaaaargh();
-
-// I'm up to the start of Part II on page 13.
