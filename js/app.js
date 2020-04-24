@@ -23,12 +23,16 @@ const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
   const level = session.level;
   const phrases = session.phrases;
 
-  const game = new Game(user,level,phrases);
-
-  game.startGame();
-
   const marvin = new StarshipHeartOfGold;
-  marvin.test();
+
+  const startButton = document.getElementById("btn__reset");
+
+  startButton.addEventListener('click',function() {
+    const game = new Game(user,level,phrases);
+    const qwerty = document.getElementById('qwerty');
+    qwerty.addEventListener('click',game.handleInteraction,false)
+    game.startGame();
+  },false);
 
 }
 

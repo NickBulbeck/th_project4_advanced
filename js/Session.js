@@ -19,10 +19,12 @@ class Session {
     let phraseSourceData = null;
     const localStorageFound = localStorage.getItem('phraseHunterApp');
     if (localStorageFound) {
+      console.log("session.initialiseData - storage found");
       const rawAppData = JSON.parse(localStorageFound);
       phraseSourceData = rawAppData.phrases;
       localStorage.removeItem('phraseHunterApp');
     } else {
+      console.log("session.initialiseData - setting up storage from data.js");
       phraseSourceData = data_js_sourceData;
       const newAppData = {
             users:[],
@@ -39,13 +41,18 @@ class Session {
   }
 
   processSourceData(array) {
-    const levelledArray = array.filter( (phrase) => {
-            if (phrase.level === this.level) {
-              return true;
-            } else {
-              return false;
-            }
-    });
+    let levelledArray;
+    if (this.level !== "demo") {
+      levelledArray = array.filter( (phrase) => {
+        if (phrase.level === this.level) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    } else {
+      levelledArray = array;
+    }
     return levelledArray;
   }
 

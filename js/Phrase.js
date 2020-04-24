@@ -8,17 +8,18 @@
     this.level = level;
   }
 
-  addPhraseToDisplay(parentNode) {
+  addPhraseToDisplay() {
+    const phraseUl = document.getElementById("phrase").firstElementChild;
+    phraseUl.innerHTML = '';
     for (let i=0; i<this.text.length; i++) {
       const x = this.text[i];
-      // document.createElement('li');
       let html = "";
       if (x === " ") {
         html = `<li class = "space"> </li>`;
       } else {
         html = `<li class = "hide letter ${x}">${x}</li>`;
       }
-      parentNode.innerHTML += html;
+      phraseUl.innerHTML += html;
     }
   }
 
@@ -31,12 +32,20 @@
 //    intermediate: remove one but flag that there's more
 //    hard: just remove one
 //    This implies returning not just a single boolean, but an object with two booleans.
-*/   }
 
-  showMatchedLetter() {
+*/  
+    console.log(document.querySelector(`hide letter ${x}`));
+    let found = false;
+    if (document.querySelector(`hide letter ${x}`)) {
+      found = true;
+    }
+    return found;
+  }
+
+  showMatchedLetter(x) {
     // reveals letters that match the chosen letter. Can do this by selecting letters iwth a class of
     // x. Seems to me that we don't need both these methods; when we find yin with a class of x, we
-    // can say that checkLetter is true, and we can remove that class when we reveal it as well.
+    // can say that checkLetter is true, and we can remove that class when we reveal it as well. It's in HERE that we have the game logic.
   }
 
 //==============================================================

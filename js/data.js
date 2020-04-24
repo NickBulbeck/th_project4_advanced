@@ -12,6 +12,14 @@ const data_js_sourceData =[
     level: "easy"
   },
   {
+    text: "do not disturb",
+    level: "easy"
+  },
+  {
+    text: "flower of scotland",
+    level: "easy"
+  },
+  {
     text: "many hands make light work",
     level: "intermediate"
   },
@@ -21,6 +29,14 @@ const data_js_sourceData =[
   },
   {
     text: "a stitch in time saves nine",
+    level: "intermediate"
+  },
+  {
+    text: "make hay while the sun shines",
+    level: "intermediate"
+  },
+  {
+    text: "look before you leap",
     level: "intermediate"
   },
   {
@@ -38,5 +54,11 @@ const data_js_sourceData =[
   {
     text: "you must become like water my friend",
     level: "hard"
+  },
+  {
+    text: "strawberry fields forever",
+    level: "hard"
   }
 ]
+
+
