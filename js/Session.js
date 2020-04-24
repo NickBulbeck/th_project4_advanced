@@ -12,7 +12,7 @@ class Session {
   }
 
   setUpLevel() {
-    return "intermediate"; // Hard-code this in for now. ToDo: get it via the browser.
+    return "easy"; // Hard-code this in for now. ToDo: get it via the browser.
   }
 
   initialiseData() {
@@ -51,7 +51,7 @@ class Session {
         }
       });
     } else {
-      levelledArray = array;
+      levelledArray = array.map( phrase => phrase.level = "demo");
     }
     return levelledArray;
   }

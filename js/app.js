@@ -30,8 +30,12 @@ const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
   startButton.addEventListener('click',function() {
     const game = new Game(user,level,phrases);
     const qwerty = document.getElementById('qwerty');
-    qwerty.addEventListener('click',game.handleInteraction,false)
     game.startGame();
+    qwerty.addEventListener('click',function(event) {
+      if (event.target.tagName === "BUTTON") {
+        game.handleInteraction()
+      }
+    },false)
   },false);
 
 }

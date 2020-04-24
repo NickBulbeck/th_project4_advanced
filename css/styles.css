@@ -59,6 +59,16 @@ button {
   transition: var(--transition);
   cursor: pointer;
 }
+/*Nick added...*/
+button:disabled {
+  font-style: italic;
+}
+.button__green {
+  background-color: green;
+}
+.button__red {
+  background-color: firebrick;
+}
 
 #btn__reset {
 	width: 200px;

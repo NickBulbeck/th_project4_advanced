@@ -19,5 +19,3 @@ This is done either the session, or within app.js. Because it's based on the use
 ==========================
 C) Create the correct Game
 ==========================
-
-Again, this is done within either app.js or the Session class. I'm going to suggest creating the array of Phrase o

@@ -24,28 +24,20 @@
   }
 
   checkLetter(x) {
-/*    this checks the phrase for x. NOW: crucial design decision. I'll read through what They think, but:
-//    Since the displayed elements are not a collection based on the phrase, we can mutate this.text 
-//    without affecting the game's display. Thus, finding the letter and then splicing it out of the array
-//    would be a thing, so it's not found next time. At this point, we can distinguish between levels:
-//    demo and easy: remove them all
-//    intermediate: remove one but flag that there's more
-//    hard: just remove one
-//    This implies returning not just a single boolean, but an object with two booleans.
-
-*/  
-    console.log(document.querySelector(`hide letter ${x}`));
-    let found = false;
-    if (document.querySelector(`hide letter ${x}`)) {
-      found = true;
-    }
-    return found;
+    let classes = ".hide.letter." + x;
+    return (document.querySelectorAll(classes).length > 0);
   }
 
   showMatchedLetter(x) {
-    // reveals letters that match the chosen letter. Can do this by selecting letters iwth a class of
-    // x. Seems to me that we don't need both these methods; when we find yin with a class of x, we
-    // can say that checkLetter is true, and we can remove that class when we reveal it as well. It's in HERE that we have the game logic.
+    let classes = ".hide.letter." + x;
+    let matchedLetters = document.querySelectorAll(classes);
+    if (this.level === "demo" || this.level === "easy") {
+      for (let i=0; i<matchedLetters.length; i++) {
+        matchedLetters[i].classList.remove("hide");
+        matchedLetters[i].style.color = "inherit";
+      }
+    }
+
   }
 
 //==============================================================
