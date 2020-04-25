@@ -17,5 +17,7 @@ The options:
 This is done either the session, or within app.js. Because it's based on the user's preferences, it's best done by the Session object.
 
 ==========================
-C) Create the correct Game
+C) Saturday ToDo
 ==========================
+1 Change the key styling to "chosen" and "wrong"          DONE
+2 Slack re the problem of event handler firing twice...   

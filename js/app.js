@@ -17,8 +17,6 @@
 const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
 
   const session = new Session();
-  // This retrieves the quote information either from data.js.
-  // In due course it'll also retrieve User and level from a wee interface (at the moment they're hard-coded).
   const user = session.user;
   const level = session.level;
   const phrases = session.phrases;
@@ -26,16 +24,21 @@ const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
   const marvin = new StarshipHeartOfGold;
 
   const startButton = document.getElementById("btn__reset");
+  const qwerty = document.getElementById('qwerty');
+  let qwertyFlag = false;
+
 
   startButton.addEventListener('click',function() {
     const game = new Game(user,level,phrases);
-    const qwerty = document.getElementById('qwerty');
     game.startGame();
-    qwerty.addEventListener('click',function(event) {
-      if (event.target.tagName === "BUTTON") {
-        game.handleInteraction()
-      }
-    },false)
+    if (!qwertyFlag) {
+      qwerty.addEventListener('click',function(event) {
+        qwertyFlag = true;
+        if (event.target.tagName === "BUTTON") {
+          game.handleInteraction()
+        }
+      },false)
+    }
   },false);
 
 }

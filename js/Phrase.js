@@ -10,6 +10,11 @@
 
   addPhraseToDisplay() {
     const phraseUl = document.getElementById("phrase").firstElementChild;
+    const buttonKeys = document.getElementById('qwerty').getElementsByTagName("button");
+    for (let i=0; i< buttonKeys.length; i++) {
+      buttonKeys[i].disabled = false;
+      buttonKeys[i].classList = "key";
+    }
     phraseUl.innerHTML = '';
     for (let i=0; i<this.text.length; i++) {
       const x = this.text[i];
@@ -25,6 +30,9 @@
 
   checkLetter(x) {
     let classes = ".hide.letter." + x;
+    // console.log(`x: ${x}.`);
+    // console.log(`classes: ${classes}`);
+    // console.log(document.querySelectorAll(classes));
     return (document.querySelectorAll(classes).length > 0);
   }
 

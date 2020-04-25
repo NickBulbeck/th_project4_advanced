@@ -60,22 +60,24 @@
         - Also there must be a way of replaying cleanly when the game ends, by selecting Start Game.
     */
   
-    
     const letter = event.target.textContent;
     if (!this.activePhrase.checkLetter(letter)) {
       this.removeLife();
       if (this.level === "demo" || this.level === "easy") {
         event.target.disabled = true;
-        event.target.classList.add("button__red");
+        event.target.classList.add("wrong");
       }
       return null;
     }
     this.activePhrase.showMatchedLetter(letter);
     if (this.level === "demo" || this.level === "easy") {
       event.target.disabled = true;
-      event.target.classList.add("button__green");
+      event.target.classList.add("chosen");
     }
-    console.log("Check for win: " + this.checkForWin());
+    if (this.checkForWin()) {
+      overlay.style.display = "";
+      overlay.classList.add("win");
+    }
   }
 
   checkForWin() {
@@ -102,7 +104,7 @@
     console.log("GAME OVER!!");
     const overlay = document.getElementById("overlay");
     overlay.style.display = "";
-
+    overlay.classList.add("lose");
   }
 
 
