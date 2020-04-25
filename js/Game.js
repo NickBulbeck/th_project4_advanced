@@ -62,8 +62,10 @@
       event.target.classList.add("chosen");
     }
     if (this.checkForWin()) {
+      console.log("WIN");
+      const overlay = document.getElementById("overlay");
       overlay.style.display = "";
-      overlay.classList.add("win");
+      overlay.classList = "start win";
     }
   }
 
@@ -90,7 +92,8 @@
   gameOver() {
     const overlay = document.getElementById("overlay");
     overlay.style.display = "";
-    overlay.classList.add("lose");
+    overlay.classList = "start lose";
+    console.log("Just added the LOSE class");
   }
 
 
