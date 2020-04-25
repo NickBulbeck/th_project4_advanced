@@ -47,19 +47,6 @@
   }
 
   handleInteraction() {
-    // contains most of what's in qwertyClick at the moment. It's a parent method that calls
-    // the other three, as well as some Phrase methods. See Step 10 on page 23. They suggest 
-    // setting up the event listener in app.js and passing a button into here rather than an
-    // event. I'd rather handle an event in a function called "handle an event".
-
-    /*  Official rules (for use in demo and easy modes):
-        - Once a letter is clicked, it's disabled (note the .chosen and .wrong classes)
-        - If checkLetter, ALL the matching letters are revealed
-        - If !checkLetter, a heart is changed to a lost heart
-        - The game ends when all hears are lost or all letters revealed
-        - Also there must be a way of replaying cleanly when the game ends, by selecting Start Game.
-    */
-  
     const letter = event.target.textContent;
     if (!this.activePhrase.checkLetter(letter)) {
       this.removeLife();
@@ -83,7 +70,6 @@
   checkForWin() {
     // Check to see if a' the letters are matched.
     if (document.querySelectorAll(".hide.letter").length === 0) {
-      console.log("WIN !!!!");
       return true;
     } else {
       return false;
@@ -91,17 +77,17 @@
   }
 
   removeLife() {
-    // if phrase.checkLetter() returns false; increments this.missed and replaces a liveHeart with a lostHeart. also calls gameOver if it's the last heart.
-    console.log("Removing a life...");
+    const liveHearts = document.querySelectorAll(".tries");
+    const heart = liveHearts[0];
+    heart.firstElementChild.src = "images/lostHeart.png";
+    heart.classList = ".tried";
     this.missed++;
     if (this.missed === 5) {
       this.gameOver();
-    }
+    } 
   }
 
   gameOver() {
-    // if phrase.checkLetter() returns false && a' the lives are awa'. Also displays a win or loss using the original start screen with the win or lose CSS class added.
-    console.log("GAME OVER!!");
     const overlay = document.getElementById("overlay");
     overlay.style.display = "";
     overlay.classList.add("lose");

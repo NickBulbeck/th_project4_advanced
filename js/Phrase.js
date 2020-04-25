@@ -28,6 +28,7 @@
     }
   }
 
+
   checkLetter(x) {
     let classes = ".hide.letter." + x;
     // console.log(`x: ${x}.`);
