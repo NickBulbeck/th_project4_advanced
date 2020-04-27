@@ -16,9 +16,9 @@
       buttonKeys[i].classList = "key";
     }
     phraseUl.innerHTML = '';
+    let html = "";
     for (let i=0; i<this.text.length; i++) {
       const x = this.text[i];
-      let html = "";
       if (x === " ") {
         html = `<li class = "space"> </li>`;
       } else {
@@ -31,9 +31,6 @@
 
   checkLetter(x) {
     let classes = ".hide.letter." + x;
-    // console.log(`x: ${x}.`);
-    // console.log(`classes: ${classes}`);
-    // console.log(document.querySelectorAll(classes));
     return (document.querySelectorAll(classes).length > 0);
   }
 

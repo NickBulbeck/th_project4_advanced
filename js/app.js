@@ -27,6 +27,9 @@ const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
   const qwerty = document.getElementById('qwerty');
   let qwertyFlag = false;
 
+  // document.addEventListener('keydown',function() {
+  //   console.log("Letter pressed: " + event.keyCode);
+  // });
 
   startButton.addEventListener('click',function() {
     const game = new Game(user,level,phrases);
@@ -37,8 +40,11 @@ const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
         if (event.target.tagName === "BUTTON") {
           game.handleInteraction()
         }
-      },false)
+      },false);
     }
+    document.addEventListener('keydown',function() {
+      console.log("Letter pressed: " + event.keyCode);
+    });
   },false);
 
 }
