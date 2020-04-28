@@ -26,7 +26,7 @@
   getRandomPhrase() {
     const index = Math.floor(Math.random() * this.phrases.length);
     const phrase = this.phrases[index];
-    this.phrases.splice(index,1);
+    // this.phrases.splice(index,1);
     return phrase;
   }
 
@@ -46,31 +46,38 @@
     this.playCounter++;
   }
 
-  handleInteraction() {
-    const letter = event.target.textContent;
+  handleInteraction(letter) {
+    const targetLetter = this.findLetterKey(letter);
     if (!this.activePhrase.checkLetter(letter)) {
       this.removeLife();
       if (this.level === "demo" || this.level === "easy") {
-        event.target.disabled = true;
-        event.target.classList.add("wrong");
+        targetLetter.disabled = true;
+        targetLetter.classList.add("wrong");
       }
       return null;
     }
     this.activePhrase.showMatchedLetter(letter);
     if (this.level === "demo" || this.level === "easy") {
-      event.target.disabled = true;
-      event.target.classList.add("chosen");
+      targetLetter.disabled = true;
+      targetLetter.classList.add("chosen");
     }
     if (this.checkForWin()) {
-      console.log("WIN");
       const overlay = document.getElementById("overlay");
       overlay.style.display = "";
       overlay.classList = "start win";
     }
   }
 
+  findLetterKey(letter) {
+    const letterKeys = document.querySelectorAll(".key");
+    for (let i=0; i<letterKeys.length; i++) {
+      if (letterKeys[i].textContent === letter) {
+        return letterKeys[i];
+      }
+    }
+  }
+
   checkForWin() {
-    // Check to see if a' the letters are matched.
     if (document.querySelectorAll(".hide.letter").length === 0) {
       return true;
     } else {
@@ -82,7 +89,7 @@
     const liveHearts = document.querySelectorAll(".tries");
     const heart = liveHearts[0];
     heart.firstElementChild.src = "images/lostHeart.png";
-    heart.classList = ".tried";
+    heart.classList = "tried";
     this.missed++;
     if (this.missed === 5) {
       this.gameOver();
@@ -93,7 +100,7 @@
     const overlay = document.getElementById("overlay");
     overlay.style.display = "";
     overlay.classList = "start lose";
-    console.log("Just added the LOSE class");
+    this.missed = 0;
   }
 
 
@@ -101,12 +108,5 @@
 //==============================================================
 //    Get rid of these when you've finished testing!
 //==============================================================
-  gameTest() {
-    const testOutput = `testing the Game object: user is ${this.user.name},
-                        level is ${this.level},
-                        first phrase is ${this.phrases[0].text},
-                        and plays is ${Game.plays[this.level]}`;
-    return testOutput;
-  }
 
  }

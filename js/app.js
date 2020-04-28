@@ -25,27 +25,32 @@ const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
 
   const startButton = document.getElementById("btn__reset");
   const qwerty = document.getElementById('qwerty');
-  let qwertyFlag = false;
-
-  // document.addEventListener('keydown',function() {
-  //   console.log("Letter pressed: " + event.keyCode);
-  // });
+  let listenersAdded = false;
 
   startButton.addEventListener('click',function() {
     const game = new Game(user,level,phrases);
+// consider window.reload(false) - true doesn't use the cache. Unsure what the effect on 
+// localstorage will be there.
     game.startGame();
-    if (!qwertyFlag) {
+    console.log("Testing findLetterKey...");
+    console.log(game.findLetterKey("c"));
+    if (!listenersAdded) {
+      listenersAdded = true;
       qwerty.addEventListener('click',function(event) {
-        qwertyFlag = true;
         if (event.target.tagName === "BUTTON") {
-          game.handleInteraction()
+          const letter = event.target.textContent
+          game.handleInteraction(letter);
         }
-      },false);
+      });
+      document.addEventListener('keydown',function() {
+        const code = event.keyCode;
+        const letter = String.fromCharCode(code).toLowerCase();
+        if (/^[a-z]+$/.test(letter)) {
+          game.handleInteraction(letter);
+        }
+      });
     }
-    document.addEventListener('keydown',function() {
-      console.log("Letter pressed: " + event.keyCode);
-    });
-  },false);
+  });
 
 }
 
