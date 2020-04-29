@@ -32,8 +32,6 @@ const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
 // consider window.reload(false) - true doesn't use the cache. Unsure what the effect on 
 // localstorage will be there.
     game.startGame();
-    console.log("Testing findLetterKey...");
-    console.log(game.findLetterKey("c"));
     if (!listenersAdded) {
       listenersAdded = true;
       qwerty.addEventListener('click',function(event) {
@@ -45,7 +43,8 @@ const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
       document.addEventListener('keydown',function() {
         const code = event.keyCode;
         const letter = String.fromCharCode(code).toLowerCase();
-        if (/^[a-z]+$/.test(letter)) {
+        const alreadyTried = game.activePhrase.lettersGuessed.includes(letter);
+        if (/^[a-z]+$/.test(letter) && !alreadyTried) {
           game.handleInteraction(letter);
         }
       });
