@@ -27,6 +27,31 @@ const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
   const qwerty = document.getElementById('qwerty');
   let listenersAdded = false;
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+  // startButton.addEventListener('click',function() {
+  //   const game = new Game(user,level,phrases);
+  //   game.startGame();
+  // })
+
+  // qwerty.addEventListener('click',function(event) {
+  //   if (event.target.tagName === "BUTTON") {
+  //     const letter = event.target.textContent
+  //     game.handleInteraction(letter);
+  //   }
+  // });
+
+  // document.addEventListener('keydown',function() {
+  //   const code = event.keyCode;
+  //   const letter = String.fromCharCode(code).toLowerCase();
+  //   if (/^[a-z]+$/.test(letter)) {
+  //     game.handleInteraction(letter);
+  //   }
+  // });
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+//============================================================================================
   startButton.addEventListener('click',function() {
     const game = new Game(user,level,phrases);
 // consider window.reload(false) - true doesn't use the cache. Unsure what the effect on 
@@ -43,14 +68,15 @@ const publicStaticVoidMainStringAaaaaargh = () => { // I am SOOOOO funny...
       document.addEventListener('keydown',function() {
         const code = event.keyCode;
         const letter = String.fromCharCode(code).toLowerCase();
-        const alreadyTried = game.activePhrase.lettersGuessed.includes(letter);
-        if (/^[a-z]+$/.test(letter) && !alreadyTried) {
+        if (/^[a-z]+$/.test(letter)) {
           game.handleInteraction(letter);
         }
       });
     }
   });
-
+//============================================================================================
 }
 
 publicStaticVoidMainStringAaaaaargh();
+
+

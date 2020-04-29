@@ -6,7 +6,6 @@
   constructor(text,level) {
     this.text = text;
     this.level = level;
-    this.lettersGuessed = "";
   }
 
   addPhraseToDisplay() {
@@ -38,19 +37,12 @@
 
 
   checkLetter(x) {
-/*  What do I need here?
-    The problem is that this is an indirect check. It was written for the click event, which only ever fires if the letter hasn't been selected. It now needs to handle the keydown event, which never gets disabled. 
-    At the moment, it checks for hidden letters in the phrase - if li with hide.letter.t
-    exists, send back true: the letter checks. What then happens is the "hide" class is
-    removed. If the button weren't disabled, checkLetter would keep removing lives.
-    This can't be checked again with a button click because the button is disabled. But the keypress is not, so repeated keypresses come round this loop repeatedly, and the second time onwards, they don't find a hidden letter in the phrase. So it comes back false, and keeps removing a life.
-    Everything else that happens in handleInteraction is idempotent - it's only removeLife that's not. So I just need to get this to return true if:
-      There are no x letters to reveal AND no x letters have been selected.
-*/
-    this.lettersGuessed += x;
     let hideLetterX = ".hide.letter." + x;
     const hiddenXs = document.querySelectorAll(hideLetterX);
-    return (hiddenXs.length > 0);
+// Now, get the array of letters that have a class of selected and x...
+    let xTriedAlready = ".selected." + x;
+    const alreadyTriedXs = document.querySelectorAll(xTriedAlready);
+    return (hiddenXs.length + alreadyTriedXs.length > 0);
   }
 
   showMatchedLetter(x) {
