@@ -212,3 +212,13 @@ button:disabled {
 .lose a {
   color: var(--color-lose);
 }
+
+/* Large friendly letters */
+
+#dontPanic p {
+  font-family: 'Baloo Bhaina 2', cursive;
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: -1rem;
+}
+

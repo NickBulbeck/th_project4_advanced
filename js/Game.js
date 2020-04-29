@@ -21,12 +21,18 @@
     this.score = 0; 
     this.activePhrase = null;
     this.missed = 0;
+    this.storedPhrases = [];
   }
 
   getRandomPhrase() {
+    if (this.phrases.length === 0) {
+      this.phrases = this.storedPhrases;
+      this.storedPhrases = [];
+    }
     const index = Math.floor(Math.random() * this.phrases.length);
     const phrase = this.phrases[index];
-    // this.phrases.splice(index,1);
+    this.phrases.splice(index,1);
+    this.storedPhrases.push(phrase);
     return phrase;
   }
 
