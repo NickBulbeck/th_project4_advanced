@@ -215,10 +215,17 @@ button:disabled {
 
 /* Large friendly letters */
 
+#dontPanic {
+  position: relative;
+  z-index: -5;
+}
+
 #dontPanic p {
   font-family: 'Baloo Bhaina 2', cursive;
   font-size: 2rem;
   margin-top: 0;
   margin-bottom: -1rem;
+  position: relative;
+  top:-10px;
 }
 

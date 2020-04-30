@@ -50,8 +50,10 @@ class StarshipHeartOfGold {
   }
 
   ford() {
-  	setInterval(this.trillian.bind(this),25);
+  	setInterval(this.trillian.bind(this),17);
   }
+
+  
 
 /*
 	Sets the colour to an RGB value. Increments the r, g and b by a given amount unless they're 256, in which case it gets reset to 0 again.

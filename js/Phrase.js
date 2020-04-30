@@ -16,9 +16,7 @@
       buttonKeys[i].classList = "key";
     }
     const lostHearts = document.querySelectorAll('.tried');
-    // console.log(`lostHearts: ${lostHearts.length}`);
     for (let i=0; i<lostHearts.length; i++) {
-      // console.log("Changing a heart back...");
       lostHearts[i].firstElementChild.src = "images/liveHeart.png";
       lostHearts[i].classList = "tries";
     }
